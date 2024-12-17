@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { Hero } from "./Hero";
 
 export function GameScreen() {
-  const [heroInfo, setHeroInfo] = useState([]);
+  const [heroInfo, setHeroInfo] = useState();
+  const [heroList, setHeroList] = useState();
 
   useEffect(() => {
     fetch("https://api.opendota.com/api/heroes")
@@ -12,9 +13,25 @@ export function GameScreen() {
         }
         return response.json();
       })
-      .then((response) => setHeroInfo(response))
+      .then((response) => {
+        console.log(response); //CONSOLE LOG
+        setHeroInfo(response);
+        generateRandomHeroes();
+      })
       .catch((error) => alert(error));
   }, []);
+
+  function generateRandomHeroes() {
+    const heroesIndex = [];
+    for (let i = 0; i < 20; i++) {
+      let index = Math.floor(Math.random() * 101);
+      while (heroesIndex.includes(index)) {
+        index = Math.floor(Math.random() * 101);
+      }
+      heroesIndex.push(index);
+    }
+    setHeroList(heroesIndex);
+  }
 
   return (
     <div>
@@ -22,8 +39,11 @@ export function GameScreen() {
         <h1>Score: </h1>
         <h1>Best Score: </h1>
       </header>
-      <section className="text-white">
-        <Hero heroInfo={heroInfo} />
+      <section className="flex flex-wrap text-white">
+        {heroInfo !== undefined &&
+          heroList.map((hero) => {
+            return <Hero key={hero} heroInfo={heroInfo[hero]} />;
+          })}
       </section>
     </div>
   );
