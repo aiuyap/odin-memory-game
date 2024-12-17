@@ -1,27 +1,19 @@
 import { useEffect, useState } from "react";
+import { Hero } from "./Hero";
 
 export function GameScreen() {
-  const url = "https://dota2-heroes.p.rapidapi.com/heroes/english/5";
-  const options = {
-    method: "GET",
-    headers: {
-      "x-rapidapi-key": "cdaff566f9mshe33558d87f8a1b4p1083f9jsn0fe2382c57f5",
-      "x-rapidapi-host": "dota2-heroes.p.rapidapi.com",
-    },
-  };
-
-  const [heroDetails, setHeroDetails] = useState({
-    name: "",
-    img: "",
-  });
+  const [heroInfo, setHeroInfo] = useState([]);
 
   useEffect(() => {
-    fetch(url, options)
-      .then((response) => response.json())
+    fetch("https://api.opendota.com/api/heroes")
       .then((response) => {
-        setHeroDetails({ name: response.name_loc, img: response.thumb_image });
-        console.log(response.name_loc);
-      });
+        if (!response.ok) {
+          throw new Error("Data fetch unsuccessful, please reload the website");
+        }
+        return response.json();
+      })
+      .then((response) => setHeroInfo(response))
+      .catch((error) => alert(error));
   }, []);
 
   return (
@@ -31,10 +23,7 @@ export function GameScreen() {
         <h1>Best Score: </h1>
       </header>
       <section className="text-white">
-        <div>
-          <img src={heroDetails.img} alt="Dota Hero" />
-          <h2>{heroDetails.name}</h2>
-        </div>
+        <Hero heroInfo={heroInfo} />
       </section>
     </div>
   );
