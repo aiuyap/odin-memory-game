@@ -39,7 +39,7 @@ export function GameScreen() {
         <h1>Score: </h1>
         <h1>Best Score: </h1>
       </header>
-      <section className="flex flex-wrap text-white">
+      <section className="flex flex-wrap justify-center gap-16 p-4 text-white lg:p-16">
         {heroInfo !== undefined &&
           heroList.map((hero) => {
             return <Hero key={hero} heroInfo={heroInfo[hero]} />;
