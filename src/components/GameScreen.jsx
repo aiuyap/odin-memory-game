@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Hero } from "./Hero";
 import { generateRandomHeroes, shuffleHeroes } from "./utils";
+import { Loading } from "./Loading";
 
 export function GameScreen() {
   const [heroInfo, setHeroInfo] = useState();
@@ -57,7 +58,9 @@ export function GameScreen() {
         </h1>
       </header>
       <section className="flex flex-wrap justify-center gap-1 py-1 text-white md:gap-16 md:p-16">
-        {heroInfo !== undefined &&
+        {heroInfo === undefined ? (
+          <Loading />
+        ) : (
           heroList.map((hero) => {
             return (
               <Hero
@@ -66,7 +69,8 @@ export function GameScreen() {
                 heroInfo={heroInfo[hero]}
               />
             );
-          })}
+          })
+        )}
       </section>
     </div>
   );
