@@ -1,8 +1,7 @@
-export function Hero({ key, heroInfo, onClick }) {
+export function Hero({ heroInfo, onClick }) {
   return (
     <div
       onClick={() => onClick(heroInfo.id)}
-      key={key}
       className="grid max-w-48 transform cursor-pointer rounded-xl bg-black bg-opacity-70 p-4 transition-transform hover:scale-110"
     >
       <img

@@ -30,6 +30,12 @@ export function GameScreen() {
     if (!clickedHeroes.includes(key)) {
       setClickedHeroes([...clickedHeroes, key]);
       setScore((current) => {
+        if (current.currentScore + 1 > current.bestScore) {
+          return {
+            currentScore: current.currentScore + 1,
+            bestScore: current.currentScore + 1,
+          };
+        }
         return { ...current, currentScore: current.currentScore + 1 };
       });
     } else {
@@ -43,8 +49,12 @@ export function GameScreen() {
   return (
     <div>
       <header className="flex flex-wrap justify-center gap-16 bg-black bg-opacity-50 py-4 text-2xl font-extrabold text-white sm:gap-20 lg:gap-40">
-        <h1>Score: {score.currentScore}</h1>
-        <h1>Best Score: {score.bestScore}</h1>
+        <h1>
+          Score: <span className="text-green-500">{score.currentScore}</span>
+        </h1>
+        <h1>
+          Best Score: <span className="text-red-600">{score.bestScore}</span>
+        </h1>
       </header>
       <section className="flex flex-wrap justify-center gap-16 p-4 text-white lg:p-16">
         {heroInfo !== undefined &&
