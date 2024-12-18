@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Hero } from "./Hero";
-import { generateRandomHeroes } from "./utils";
+import { generateRandomHeroes, shuffleHeroes } from "./utils";
 
 export function GameScreen() {
   const [heroInfo, setHeroInfo] = useState();
@@ -25,13 +25,17 @@ export function GameScreen() {
   }, []);
 
   function handleClick(key) {
+    setHeroList(() => shuffleHeroes(heroList));
+
     if (!clickedHeroes.includes(key)) {
       setClickedHeroes([...clickedHeroes, key]);
       setScore((current) => {
         return { ...current, currentScore: current.currentScore + 1 };
       });
     } else {
-      setScore({ ...score, currentScore: 0 });
+      setScore((current) => {
+        return { ...current, currentScore: 0 };
+      });
       setClickedHeroes([]);
     }
   }
