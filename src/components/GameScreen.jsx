@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Hero } from "./Hero";
 import { generateRandomHeroes, shuffleHeroes } from "./utils";
 import { Loading } from "./Loading";
+import { Scoreboard } from "./Scoreboard";
 
 export function GameScreen() {
   const [heroInfo, setHeroInfo] = useState();
@@ -50,12 +51,7 @@ export function GameScreen() {
   return (
     <div className="mt-16">
       <header className="fixed top-0 z-20 flex w-full flex-wrap justify-center gap-16 bg-black bg-opacity-50 py-4 text-2xl font-extrabold text-white sm:gap-20 lg:gap-40">
-        <h1>
-          Score: <span className="text-green-500">{score.currentScore}</span>
-        </h1>
-        <h1>
-          Best Score: <span className="text-red-600">{score.bestScore}</span>
-        </h1>
+        <Scoreboard score={score} />
       </header>
       <section className="flex flex-wrap justify-center gap-1 py-1 text-white md:gap-16 md:p-16">
         {heroInfo === undefined ? (
