@@ -1,6 +1,6 @@
 export function StartScreen({ onClick }) {
   return (
-    <div className="flex h-screen flex-col justify-center bg-black bg-opacity-70 align-middle text-white">
+    <div className="flex h-screen w-screen flex-col justify-center bg-black bg-opacity-70 align-middle text-white">
       <div className="grid justify-center">
         <h1 className="mb-10 text-center text-6xl font-bold">
           DotA Memory Game

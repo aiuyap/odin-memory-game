@@ -48,8 +48,8 @@ export function GameScreen() {
   }
 
   return (
-    <div className="mt-16">
-      <header className="fixed top-0 z-20 flex w-full flex-wrap justify-center gap-16 bg-black bg-opacity-50 py-4 text-2xl font-extrabold text-white sm:gap-20 lg:gap-40">
+    <div className="w-screen">
+      <header className="sticky top-0 z-10 flex w-full flex-wrap justify-center gap-16 bg-black bg-opacity-50 py-4 text-2xl font-extrabold text-white sm:gap-20 lg:gap-40">
         <Scoreboard score={score} />
       </header>
       <section className="flex flex-wrap justify-center gap-1 py-1 pb-0 text-white md:gap-16 md:p-16 md:pb-0">
