@@ -8,7 +8,7 @@ export function StartScreen({ onClick }) {
         <div className="px-4 text-gray-300">
           <h2 className="font-bold text-white">Instructions: </h2>
           <p>
-            - Get points by clicking on a Hero but don&apos;t click it more than
+            - Get points by clicking on a hero but don&apos;t click it more than
             once!
           </p>
           <p>- Test yourself on how many clicked heroes you can remember.</p>

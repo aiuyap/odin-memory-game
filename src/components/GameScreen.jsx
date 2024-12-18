@@ -19,7 +19,6 @@ export function GameScreen() {
         return response.json();
       })
       .then((response) => {
-        console.log(response); //CONSOLE LOG
         setHeroInfo(response);
         setHeroList(generateRandomHeroes);
       })
