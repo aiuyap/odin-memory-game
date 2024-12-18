@@ -47,8 +47,8 @@ export function GameScreen() {
   }
 
   return (
-    <div>
-      <header className="flex flex-wrap justify-center gap-16 bg-black bg-opacity-50 py-4 text-2xl font-extrabold text-white sm:gap-20 lg:gap-40">
+    <div className="mt-16">
+      <header className="fixed top-0 z-20 flex w-full flex-wrap justify-center gap-16 bg-black bg-opacity-50 py-4 text-2xl font-extrabold text-white sm:gap-20 lg:gap-40">
         <h1>
           Score: <span className="text-green-500">{score.currentScore}</span>
         </h1>
@@ -56,7 +56,7 @@ export function GameScreen() {
           Best Score: <span className="text-red-600">{score.bestScore}</span>
         </h1>
       </header>
-      <section className="flex flex-wrap justify-center gap-16 p-4 text-white lg:p-16">
+      <section className="flex flex-wrap justify-center gap-1 py-1 text-white md:gap-16 md:p-16">
         {heroInfo !== undefined &&
           heroList.map((hero) => {
             return (
