@@ -2,7 +2,7 @@ export function Hero({ heroInfo, onClick }) {
   return (
     <div
       onClick={() => onClick(heroInfo.id)}
-      className="grid max-w-48 transform cursor-pointer rounded-xl bg-black bg-opacity-70 p-4 transition-transform md:hover:scale-110"
+      className="grid min-w-48 max-w-48 transform cursor-pointer rounded-xl bg-black bg-opacity-70 p-4 transition-transform md:hover:scale-110"
     >
       <img
         className="h-24 w-full"
@@ -11,6 +11,7 @@ export function Hero({ heroInfo, onClick }) {
           heroInfo.name +
           "_png.png"
         }
+        width="160"
         alt="Dota Hero"
       />
       <h2 className="pt-2 text-center align-bottom font-bold">
